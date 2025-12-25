@@ -200,6 +200,15 @@ export default async function RecipePage({ params }: RecipePageProps) {
             recipeId={recipe.id}
             initialComments={commentsWithProfile}
             currentUserId={currentUser?.id}
+            currentUserProfile={
+              currentUser
+                ? {
+                    id: currentUser.id,
+                    username: currentUser.username,
+                    full_name: currentUser.full_name,
+                  }
+                : undefined
+            }
           />
           </div>
         </article>
