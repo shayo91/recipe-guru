@@ -11,7 +11,10 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 CREATE TABLE IF NOT EXISTS profiles (
   id UUID PRIMARY KEY REFERENCES auth.users(id) ON DELETE CASCADE,
   username TEXT UNIQUE NOT NULL,
+  email TEXT,
   full_name TEXT,
+  bio TEXT,
+  last_signed_in TIMESTAMPTZ,
   created_at TIMESTAMPTZ DEFAULT NOW() NOT NULL,
   updated_at TIMESTAMPTZ DEFAULT NOW() NOT NULL
 );
@@ -41,6 +44,7 @@ CREATE TABLE IF NOT EXISTS recipes (
   title TEXT NOT NULL,
   ingredients TEXT NOT NULL,
   instructions TEXT NOT NULL,
+  image_url TEXT,
   cooking_time INTEGER,
   difficulty TEXT CHECK (difficulty IN ('Easy', 'Medium', 'Hard')),
   category TEXT,
@@ -101,10 +105,11 @@ CREATE TRIGGER update_profiles_updated_at
 CREATE OR REPLACE FUNCTION public.handle_new_user()
 RETURNS TRIGGER AS $$
 BEGIN
-  INSERT INTO public.profiles (id, username, full_name)
+  INSERT INTO public.profiles (id, username, email, full_name)
   VALUES (
     NEW.id,
     COALESCE(NEW.raw_user_meta_data->>'username', 'user_' || substr(NEW.id::text, 1, 8)),
+    NEW.email,
     COALESCE(NEW.raw_user_meta_data->>'full_name', NULL)
   );
   RETURN NEW;

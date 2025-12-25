@@ -5,7 +5,7 @@ import { FeaturePreview } from "@/components/feature-preview";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white dark:bg-black">
+    <div className="min-h-screen bg-gray-50">
       <Header />
       <main className="mx-auto max-w-7xl px-6 sm:px-8">
         <Hero />

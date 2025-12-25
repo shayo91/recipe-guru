@@ -8,7 +8,7 @@ const features: Feature[] = [
   {
     icon: (
       <svg
-        className="h-6 w-6 text-zinc-600 dark:text-zinc-400"
+        className="h-6 w-6 text-gray-900"
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
@@ -28,7 +28,7 @@ const features: Feature[] = [
   {
     icon: (
       <svg
-        className="h-6 w-6 text-zinc-600 dark:text-zinc-400"
+        className="h-6 w-6 text-gray-900"
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
@@ -47,7 +47,7 @@ const features: Feature[] = [
   {
     icon: (
       <svg
-        className="h-6 w-6 text-zinc-600 dark:text-zinc-400"
+        className="h-6 w-6 text-gray-900"
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
@@ -67,18 +67,18 @@ const features: Feature[] = [
 
 export function FeaturePreview() {
   return (
-    <div className="border-t border-zinc-100 dark:border-zinc-900">
+    <div className="border-t border-gray-200">
       <div className="mx-auto max-w-3xl py-24">
         <div className="grid gap-12 sm:grid-cols-3">
           {features.map((feature) => (
             <div key={feature.title} className="text-center">
-              <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-zinc-100 dark:bg-zinc-900">
+              <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-gray-100">
                 {feature.icon}
               </div>
-              <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
+              <h3 className="text-lg font-semibold text-gray-900">
                 {feature.title}
               </h3>
-              <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+              <p className="mt-2 text-sm text-gray-600">
                 {feature.description}
               </p>
             </div>
